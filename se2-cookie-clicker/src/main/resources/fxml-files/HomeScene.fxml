@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="Hintergrund" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#timeout" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: C29F5F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller.ControllerSceneHome">
+   <padding>
+      <Insets bottom="50.0" left="35.0" right="35.0" top="25.0" />
+   </padding>
+   <children>
+      <Circle fill="#51362e" layoutX="427.0" layoutY="300.0" onMouseClicked="#increment" onMouseExited="#exited" radius="160.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="8.0" />
+      <Label fx:id="Counter" layoutX="2.0" layoutY="87.0" prefHeight="30.0" prefWidth="850.0" style="-fx-alignment: center;" text="0" textFill="WHITE">
+         <font>
+            <Font name="Inter Regular" size="24.0" />
+         </font>
+      </Label>
+      <Pane layoutX="348.0" layoutY="494.0" style="-fx-background-radius: 15;">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="155.0" style="-fx-background-color: #525252; -fx-background-radius: 15;">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/HomeClicked.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="UogradeImager" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/UpgradeIcon.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="9.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/Achievement.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="9.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/SettingIcon.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="9.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="16.0" right="16.0" />
+               </padding>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane focusTraversable="true" layoutX="295.0" layoutY="14.0" prefHeight="50.0" prefWidth="260.0" style="-fx-background-color: #525252; -fx-background-radius: 15;">
+         <children>
+            <Text fill="WHITE" layoutX="41.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 900;" text="Cookie Clicker">
+               <font>
+                  <Font name="Inter Bold" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+    
+</AnchorPane>

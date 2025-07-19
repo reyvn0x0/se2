@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" onMouseMoved="#timeout" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: C29F5F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller.ControllerSceneSetting">
+
+    <Group>
+        <Rectangle arcHeight="30" arcWidth="30" fill="525252" height="46" width="246" x="302" y="24" />
+        <Text fill="white" style="-fx-font-family: 'Inter-Bold'; -fx-font-size: 35; -fx-font-weight: bold" text="Settings" x="363" y="59.25" />
+    </Group>
+
+
+    <Pane layoutX="264" layoutY="114" prefHeight="370" prefWidth="320" style="-fx-background-color: #525252; -fx-background-radius: 15">
+        <Pane layoutX="10" layoutY="7" prefHeight="70" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 7">
+            <VBox alignment="TOP_CENTER" prefHeight="70" prefWidth="300">
+                <Label fx:id="labelMusic" maxHeight="74" text="Music" />
+                <Separator layoutY="140" style="-fx-background-color: #525252">
+                    <VBox.margin>
+                        <Insets bottom="8" />
+                    </VBox.margin>
+                </Separator>
+                <Slider fx:id="sliderMusic">
+                    <VBox.margin>
+                        <Insets left="40" right="40" />
+                    </VBox.margin>
+                </Slider>
+            </VBox>
+        </Pane>
+        <Pane layoutX="10" layoutY="87" prefHeight="70" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 7">
+            <VBox alignment="TOP_CENTER" prefHeight="70" prefWidth="300">
+                <Label fx:id="labelSFX" maxHeight="74" text="SFX" />
+                <Separator style="-fx-background-color: #525252">
+                    <VBox.margin>
+                        <Insets bottom="8" />
+                    </VBox.margin>
+                </Separator>
+                <Slider fx:id="sliderSFX" value="50">
+                    <VBox.margin>
+                        <Insets left="40" right="40" />
+                    </VBox.margin>
+                </Slider>
+            </VBox>
+        </Pane>
+        <Pane layoutX="10" layoutY="167" prefHeight="70" prefWidth="300" style="-fx-background-color: white; -fx-background-radius: 7">
+            <VBox alignment="TOP_CENTER" prefHeight="70" prefWidth="300">
+                <Label fx:id="labelBrightness" maxHeight="74" text="Brightness" />
+                <Separator style="-fx-background-color: #525252">
+                    <VBox.margin>
+                        <Insets bottom="8" />
+                    </VBox.margin>
+                </Separator>
+                <Slider fx:id="sliderBrightness" value="50">
+                    <VBox.margin>
+                        <Insets left="40" right="40" />
+                    </VBox.margin>
+                </Slider>
+            </VBox>
+        </Pane>
+    </Pane>
+   <HBox alignment="CENTER" layoutX="348.0" layoutY="504.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="155.0" style="-fx-background-color: #525252; -fx-background-radius: 15;">
+      <children>
+         <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../Images/Home.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../Images/UpgradeIcon.png" />
+            </image>
+            <HBox.margin>
+               <Insets left="9.0" />
+            </HBox.margin>
+         </ImageView>
+         <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../Images/Achievement.png" />
+            </image>
+            <HBox.margin>
+               <Insets left="9.0" />
+            </HBox.margin>
+         </ImageView>
+         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../Images/SettingClicked.png" />
+            </image>
+            <HBox.margin>
+               <Insets left="9.0" />
+            </HBox.margin>
+         </ImageView>
+      </children>
+      <padding>
+         <Insets left="16.0" right="16.0" />
+      </padding>
+   </HBox>
+
+</AnchorPane>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#timeout" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: C29F5F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller.ControllerSceneUpgrade">
+   <children>
+      <Text layoutX="282.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Corbel Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="282.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Corbel" size="15.0" />
+         </font>
+      </Text>
+      <Pane layoutX="303.0" layoutY="14.0" prefHeight="45.0" prefWidth="245.0" style="-fx-background-color: #525252; -fx-alignment: center; -fx-background-radius: 15;">
+         <children>
+            <Text fill="#fffdfd" layoutX="64.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 900;" text="Upgrades" textAlignment="CENTER">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="266.0" layoutY="97.0" prefHeight="370.0" prefWidth="320.0" style="-fx-background-color: #525252; -fx-background-radius: 15;">
+         <children>
+            <VBox fx:id="UpgradeSammlung" prefHeight="370.0" prefWidth="320.0" spacing="5.0" style="-fx-alignment: top-center;">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding></VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="447.0" layoutY="504.0" style="-fx-background-radius: 15;" />
+      <HBox alignment="CENTER" layoutX="349.0" layoutY="504.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="155.0" style="-fx-background-color: #525252; -fx-background-radius: 15;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/UpgradeClicked.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="9.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Achievement.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="9.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/SettingIcon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="9.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="16.0" right="16.0" />
+         </padding>
+      </HBox>
+      <!-- <FontAwesomeIconView fx:id="homeIcon" glyphName="HOME" layoutX="359.0" layoutY="535.0" onMouseClicked="#colorChange" size="28" />
+      <FontAwesomeIconView fx:id="achievementIcon" glyphName="TROPHY" layoutX="433.0" layoutY="534.0" size="24" />
+      <FontAwesomeIconView fx:id="settingsIcon" glyphName="COG" glyphStyle="light" layoutX="467.0" layoutY="534.0" size="25" />
+      <FontAwesomeIconView fx:id="upgradeIcon" fill="#fff3de" glyphName="ARROW_CIRCLE_UP" layoutX="398.0" layoutY="535.0" size="25" /> -->
+   </children>
+</AnchorPane>
