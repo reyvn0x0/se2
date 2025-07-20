@@ -28,12 +28,12 @@
                <children>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Images/HomeClicked.png" />
+                        <Image url="@../Images/HomeClicked.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="UogradeImager" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Images/UpgradeIcon.png" />
+                        <Image url="@../Images/UpgradeIcon.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="9.0" />
@@ -41,7 +41,7 @@
                   </ImageView>
                   <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Images/Achievement.png" />
+                        <Image url="@../Images/Achievement.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="9.0" />
@@ -49,7 +49,7 @@
                   </ImageView>
                   <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Images/SettingIcon.png" />
+                        <Image url="@../Images/SettingIcon.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="9.0" />

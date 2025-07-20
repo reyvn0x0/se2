@@ -73,12 +73,12 @@
       <children>
          <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../Images/Home.png" />
+               <Image url="@../Images/Home.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../Images/UpgradeIcon.png" />
+               <Image url="@../Images/UpgradeIcon.png" />
             </image>
             <HBox.margin>
                <Insets left="9.0" />
@@ -86,7 +86,7 @@
          </ImageView>
          <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#switchToScene" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../Images/Achievement.png" />
+               <Image url="@../Images/Achievement.png" />
             </image>
             <HBox.margin>
                <Insets left="9.0" />
@@ -94,7 +94,7 @@
          </ImageView>
          <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../Images/SettingClicked.png" />
+               <Image url="@../Images/SettingClicked.png" />
             </image>
             <HBox.margin>
                <Insets left="9.0" />

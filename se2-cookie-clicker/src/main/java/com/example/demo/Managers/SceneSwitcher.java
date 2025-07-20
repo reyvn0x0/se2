@@ -17,12 +17,16 @@ public class SceneSwitcher implements ISceneSwitcher{
     private static final Logger logger= Logger.getLogger(SceneSwitcher.class.getName());
     private static SceneSwitcher instance;
     private Stage primaryStage;
-    public static final String HOME_SCENE = "HomeScene.fxml";
-    public static final String UPGRADE_SCENE = "UpgradeScene.fxml";
-    public static final String ACHIEVEMENT_SCENE = "AchievementScene.fxml";
-    public static final String SETTING_SCENE = "SettingScene.fxml";
+    
+    // FIXED: Correct paths to FXML files in the fxml-files folder
+    public static final String HOME_SCENE = "/fxml-files/HomeScene.fxml";
+    public static final String UPGRADE_SCENE = "/fxml-files/UpgradeScene.fxml";
+    public static final String ACHIEVEMENT_SCENE = "/fxml-files/AchievementScene.fxml";
+    public static final String SETTING_SCENE = "/fxml-files/SettingScene.fxml";
+    
     private SceneSwitcher(){}
     SoundManager soundManager=SoundManager.getInstance();
+    
     public static SceneSwitcher getInstance() {
         if (instance == null){
             instance = new SceneSwitcher();
@@ -31,9 +35,11 @@ public class SceneSwitcher implements ISceneSwitcher{
             logger.info("Manager wurde zurückgegeben!");
             return instance;
     }
+    
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage=primaryStage;
     }
+    
     @Override
     public  void switchScene(String filename)throws SoundManagerException{
             try {
@@ -56,5 +62,3 @@ public class SceneSwitcher implements ISceneSwitcher{
             }
     }
 }
-
-

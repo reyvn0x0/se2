@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.example.demo.Exceptions.PanelLoadException;
-import com.example.demo.Exceptions.SceneSwitchException;
 import com.example.demo.Exceptions.SoundManagerException;
 import com.example.demo.Factory.IObtainble;
 import com.example.demo.Main;
@@ -27,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
 public class ControllerSceneUpgrade{
     private static final Logger logger= Logger.getLogger(ControllerSceneUpgrade.class.getName());
     ISceneSwitcher manager=SceneSwitcher.getInstance();
@@ -40,6 +40,7 @@ public class ControllerSceneUpgrade{
     VBox UpgradeSammlung = new VBox();
     @FXML
     private Pane rootPane;
+    
     public void timeout() throws InterruptedException {
         if(tmanager.getTimer(1).isOn()){
             tmanager.getTimer(1).stopTimer();
@@ -49,54 +50,109 @@ public class ControllerSceneUpgrade{
             tmanager.getTimer(1).start();
         }
     }
+    
     public void initialize() {
         brightnessEffect.setBrightness(bmanager.getBrightness());
         rootPane.setEffect(brightnessEffect);
         logger.log(Level.INFO,"ControllerSceneUpgrade wurde initaliziert!");
     }
+    
     public void Upgradeadd(){
-        List<IObtainble> upgradeList = upgradeManager.getlist();
-        try{
+    System.out.println("DEBUG: Upgradeadd() called!");
+    List<IObtainble> upgradeList = upgradeManager.getlist();
+    System.out.println("DEBUG: Upgrade list size: " + upgradeList.size());
+    
+    try{
         for (IObtainble y : upgradeList) {
-            FXMLLoader fxmlLoaderUpgradepanel = new FXMLLoader(Main.class.getResource("UpgradePanel.fxml"));
+            System.out.println("DEBUG: Loading upgrade: " + y.getName());
+            
+            FXMLLoader fxmlLoaderUpgradepanel = new FXMLLoader(Main.class.getResource("/fxml-files/UpgradePanel.fxml"));
             Node Node = fxmlLoaderUpgradepanel.load();
             ControllerUpgradePanel controllerUpgradepanel = fxmlLoaderUpgradepanel.getController();
+            
+            // Set the panel data
             controllerUpgradepanel.Cost.setText(String.valueOf(y.getCost()));
             controllerUpgradepanel.Description.setText(y.getDescription());
             controllerUpgradepanel.Name.setText(y.getName());
-            if (y.getDescription().equals(controllerUpgradepanel.Name.getText()) &&!y.getName().equals("VICTORY")&&y.getStatus()){
+            
+            // Style based on purchase status
+            if (y.getStatus() && !y.getName().equals("VICTORY")) {
                 controllerUpgradepanel.Buy.setImage(image);
                 controllerUpgradepanel.Upgradebox.setStyle("-fx-background-color: #35E09D;");
-                logger.log(Level.INFO,"Bereits gekaufte Upgrades gesetzt!");
-                break;
+                System.out.println("DEBUG: Upgrade " + y.getName() + " is purchased");
+                // NO BREAK HERE! Continue to next upgrade
             }
-            else if(y.getDescription().equals("VICTORY")){
+            else if(y.getName().equals("VICTORY")) {
                 controllerUpgradepanel.Upgradebox.setStyle("-fx-background-color: #D641DE;");
                 controllerUpgradepanel.Buy.setImage(starimage);
-                logger.log(Level.INFO,"VICTORY MODE aktivert!");
+                System.out.println("DEBUG: VICTORY MODE!");
             }
-            else{
-                throw new PanelLoadException( y.getName());
-            }
+            
+            // Add to the scene
             UpgradeSammlung.getChildren().add(Node);
+            System.out.println("DEBUG: Added upgrade panel for: " + y.getName());
         }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Fehler beim Laden des UpgradePanels mit Fxmloader: " + e.getMessage());
-        }
-        catch (PanelLoadException e) {
-            logger.log(Level.WARNING, "Fehler beim Laden des Upgradepanels: " + e.getMessage());
-        }
-        upgradeManager.setlist(upgradeList);
+    } catch (IOException e) {
+        System.out.println("DEBUG: IOException: " + e.getMessage());
+        logger.log(Level.SEVERE, "Fehler beim Laden des UpgradePanels mit Fxmloader: " + e.getMessage());
     }
-        public void switchToScene(MouseEvent event) throws SoundManagerException, PanelLoadException {
-        try {
-            if(365>=event.getSceneX()&&event.getSceneX()>=342)manager.switchScene("HomeScene.fxml");
-            else if (398>=event.getSceneX()&&event.getSceneX()>=375)manager.switchScene("UpgradeScene.fxml");
-            else if (431>=event.getSceneX()&&event.getSceneX()>=408)manager.switchScene("SettingScene.fxml");
-            throw new SceneSwitchException("Ungültige Szene ausgewählt.");
-        } catch ( SceneSwitchException e) {
-            logger.log(Level.SEVERE,"Fehler beim Wechseln der Szene: " + e.getMessage());
-        }
+    upgradeManager.setlist(upgradeList);
+    System.out.println("DEBUG: Upgradeadd() finished!");
+}
+    
+    public void switchToHome(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/HomeScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Home Szene: " + e.getMessage());
     }
+}
+public void switchToScene(MouseEvent event) {
+    try {
+        double x = event.getSceneX();
+        System.out.println("Button clicked at X: " + x); // Keep for now
+        
+        // ADJUSTED RANGES - shifted left
+        if(375>=x && x>=352) {           // Home button (was 342-365)
+            manager.switchScene("/fxml-files/HomeScene.fxml");
+        }
+        else if (383>=x && x>=360) {     // Upgrade button (was 375-398)
+            manager.switchScene("/fxml-files/UpgradeScene.fxml");
+        }
+        else if (416>=x && x>=393) {     // Achievement button (was 408-431)
+            manager.switchScene("/fxml-files/AchievementScene.fxml");
+        }
+        else if (449>=x && x>=426) {     // Settings button (was 441-464)
+            manager.switchScene("/fxml-files/SettingScene.fxml");
+        }
+        else {
+            System.out.println("No button matched for X coordinate: " + x);
+        }
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln der Szene: " + e.getMessage());
+    }
+}
+public void switchToUpgrade(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/UpgradeScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Upgrade Szene: " + e.getMessage());
+    }
+}
 
+public void switchToAchievement(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/AchievementScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Achievement Szene: " + e.getMessage());
+    }
+}
+
+public void switchToSetting(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/SettingScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Setting Szene: " + e.getMessage());
+    }
+}
 }

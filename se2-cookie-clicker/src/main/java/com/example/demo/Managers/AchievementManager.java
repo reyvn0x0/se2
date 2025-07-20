@@ -18,14 +18,14 @@ public class AchievementManager implements IAListManager{
         logger.info("Manager wurde zurückgegeben!");
         return instance;
     }
-    public AchievementManager(){
-        achievementList = new ArrayList<>();
-        achievementList.add(ObtainbleFactory.create(5, true, "erhöht um 2", "Ballerina", 0, Typ.Achievement));
-        achievementList.add(ObtainbleFactory.create(10, true, "hh", "h", 0, Typ.Achievement));
-        achievementList.add(ObtainbleFactory.create(15, true, "ff", "f", 0, Typ.Achievement));
-        achievementList.add(ObtainbleFactory.create(20, true, "kk", "k", 0, Typ.Achievement));
-        logger.log(Level.INFO,"Arraylist wurde mit Achievements befüllt!");
-    }
+public AchievementManager(){
+    achievementList = new ArrayList<>();
+    achievementList.add(ObtainbleFactory.create(10, false, "First taste of sweetness", "Cookie Beginner", 0, Typ.Achievement));
+    achievementList.add(ObtainbleFactory.create(50, false, "Getting the hang of it", "Cookie Enthusiast", 0, Typ.Achievement));
+    achievementList.add(ObtainbleFactory.create(200, false, "Serious cookie business", "Cookie Expert", 0, Typ.Achievement));
+    achievementList.add(ObtainbleFactory.create(1000, false, "Master of cookies", "Cookie Master", 0, Typ.Achievement));
+    logger.log(Level.INFO,"Arraylist wurde mit Achievements befüllt!");
+}
     public boolean allactivated(){
         int count = 0;
         for(IObtainble x:achievementList){

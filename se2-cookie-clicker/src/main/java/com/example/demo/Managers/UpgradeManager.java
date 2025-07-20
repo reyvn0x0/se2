@@ -21,14 +21,13 @@ public  class UpgradeManager implements IUListManager{
         return instance;
     }
 
-    public UpgradeManager(){
-        upgradeliste=new ArrayList<>();
-                        upgradeliste.add(ObtainbleFactory.create(5, true, "ss", "doppelt", 3, Typ.Upgrade));
-                        upgradeliste.add(ObtainbleFactory.create(10, true, "hh", "h", 7, Typ.Upgrade));
-                        upgradeliste.add(ObtainbleFactory.create(15, true, "ff", "f", 10, Typ.Upgrade));
-                        upgradeliste.add(ObtainbleFactory.create(20, true, "kk", "k", 12, Typ.Upgrade));
-                        logger.log(Level.INFO,"Arraylist wurde mit Upgrades befüllt!");
-    }
+public UpgradeManager(){
+    upgradeliste=new ArrayList<>();
+    upgradeliste.add(ObtainbleFactory.create(2, false, "Double your clicking power", "Double Click", 25, Typ.Upgrade));
+    upgradeliste.add(ObtainbleFactory.create(3, false, "Triple your clicking power", "Triple Click", 100, Typ.Upgrade));
+    upgradeliste.add(ObtainbleFactory.create(4, false, "Quadruple your clicking power", "Quad Click", 400, Typ.Upgrade));
+    upgradeliste.add(ObtainbleFactory.create(5, false, "Ultimate clicking power", "Super Click", 1000, Typ.Upgrade));
+}
 
     public void activatevictory(){
         upgradeliste.parallelStream()

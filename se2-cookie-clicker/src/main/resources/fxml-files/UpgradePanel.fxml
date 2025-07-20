@@ -21,7 +21,7 @@
    <children>
       <ImageView fx:id="Buy" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#Statuschange" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
          <image>
-            <Image url="@../../../Images/BuyIcon.png" />
+            <Image url="@../Images/BuyIcon.png" />
          </image>
       </ImageView>
       <Label fx:id="Name" text="Doppelt">

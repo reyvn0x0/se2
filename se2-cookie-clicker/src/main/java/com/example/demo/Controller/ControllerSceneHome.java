@@ -4,7 +4,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.example.demo.Exceptions.PanelLoadException;
-import com.example.demo.Exceptions.SceneSwitchException;
 import com.example.demo.Exceptions.SoundManagerException;
 import com.example.demo.Factory.IObtainble;
 import com.example.demo.Managers.AchievementManager;
@@ -50,16 +49,61 @@ public class ControllerSceneHome {
         bonus=false;
         logger.log(Level.INFO,"ControllerHome wurde initaliziert!");
     }
-    public void switchToScene(MouseEvent event) throws SoundManagerException, PanelLoadException {
-        try {
-            if(365>=event.getSceneX()&&event.getSceneX()>=342)manager.switchScene("HomeScene.fxml");
-            else if (398>=event.getSceneX()&&event.getSceneX()>=375)manager.switchScene("UpgradeScene.fxml");
-            else if (431>=event.getSceneX()&&event.getSceneX()>=408)manager.switchScene("SettingScene.fxml");
-            throw new SceneSwitchException("Ungültige Szene ausgewählt.");
-        } catch ( SceneSwitchException e) {
-            logger.log(Level.SEVERE,"Fehler beim Wechseln der Szene: " + e.getMessage());
-        }
+                public void switchToHome(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/HomeScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Home Szene: " + e.getMessage());
     }
+}
+public void switchToScene(MouseEvent event) {
+    try {
+        double x = event.getSceneX();
+        System.out.println("Button clicked at X: " + x); // Keep for debugging
+        
+        // SHIFTED RIGHT - each range moved right by ~25px
+        if(375>=x && x>=352) {           // Home button (was 327-350)
+            manager.switchScene("/fxml-files/HomeScene.fxml");
+        }
+        else if (408>=x && x>=385) {     // Upgrade button (was 360-383) 
+            manager.switchScene("/fxml-files/UpgradeScene.fxml");
+        }
+        else if (441>=x && x>=418) {     // Achievement button (was 393-416)
+            manager.switchScene("/fxml-files/AchievementScene.fxml");
+        }
+        else if (474>=x && x>=451) {     // Settings button (was 426-449)
+            manager.switchScene("/fxml-files/SettingScene.fxml");
+        }
+        else {
+            System.out.println("No button matched for X coordinate: " + x);
+        }
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln der Szene: " + e.getMessage());
+    }
+}
+                public void switchToUpgrade(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/UpgradeScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Upgrade Szene: " + e.getMessage());
+    }
+}
+
+                public void switchToAchievement(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/AchievementScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Achievement Szene: " + e.getMessage());
+    }
+}
+
+                public void switchToSetting(MouseEvent event) {
+    try {
+        manager.switchScene("/fxml-files/SettingScene.fxml");
+    } catch (SoundManagerException | PanelLoadException e) {
+        logger.log(Level.SEVERE,"Fehler beim Wechseln zur Setting Szene: " + e.getMessage());
+    }
+}
     public void exited(){
         if(tmanager.getTimer(0).isOn()) {
             tmanager.getTimer(0).stopTimer();
@@ -100,7 +144,7 @@ public class ControllerSceneHome {
             logger.log(Level.INFO,"Counter wurde um 30 erhöht");
         }
         for(IObtainble x:achievementliste){
-            if(x.getValue()==counterManager.getCounter()&&!x.getName().equals("VICTORY")){
+            if(x.getValue()<=counterManager.getCounter()&&!x.getName().equals("VICTORY")){
                 x.setStatus(true);
                 soundManager.playSound('a');
                 logger.log(Level.INFO,"Der Status von " + x.getName() +" wurde auf "+x.getStatus()+"gesetzt!" );
